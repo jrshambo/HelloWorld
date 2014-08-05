@@ -1,10 +1,25 @@
 allprojects {
 	apply plugin:'java'
+	version= productVersion+'-SNAPSHOT'
 }
 
 dependencies {
 	compile project(':api')
 }
 
+ext {
+    springVersion = "3.1.0.RELEASE"
+    emailNotification = "build@master.org"
+}
+
+task printProperties << {
+    println springVersion
+	println version
+    println emailNotification
+}
+
 project (':api') {
+	tasks.withType(Jar) {
+		destinationDir = rootProject.jar.destinationDir
+    }
 }
