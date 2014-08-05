@@ -3,15 +3,22 @@ allprojects {
 	version= productVersion+'-SNAPSHOT'
 }
 
-dependencies {
-	compile project(':api')
+repositories {
+	mavenCentral()
 }
 
+dependencies {
+	compile project(':api')
+	compile group: 'org.hibernate', name: 'hibernate-core', version: '3.6.7.Final'
+}
+
+// Example of defining externals
 ext {
     springVersion = "3.1.0.RELEASE"
     emailNotification = "build@master.org"
 }
 
+// Example of a task
 task printProperties << {
     println springVersion
 	println version
