@@ -57,9 +57,6 @@ allprojects {
         published jar
     }
 	
-	
-	
-	
 }
 
 repositories {
@@ -86,6 +83,9 @@ task printProperties << {
 
 project (':api') {
 	tasks.withType(Jar) {
+		baseName = rootProject.name
+		appendix = 'api'
+		project.ext.set("archivesBaseName", rootProject.name+"-api")
 		destinationDir = rootProject.jar.destinationDir
     }
 }
